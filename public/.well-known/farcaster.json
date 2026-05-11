@@ -1,0 +1,32 @@
+{
+  "accountAssociation": {
+    "header": "TODO: generate via Warpcast Manifest Tool at https://warpcast.com/~/developers/manifest",
+    "payload": "TODO",
+    "signature": "TODO"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "High or Low",
+    "homeUrl": "https://your-app.vercel.app",
+    "iconUrl": "https://your-app.vercel.app/icon.png",
+    "splashImageUrl": "https://your-app.vercel.app/splash.png",
+    "splashBackgroundColor": "#ede9df",
+    "subtitle": "Card streak challenge on Base",
+    "description": "Guess if the next card is higher or lower. Two consecutive losses end the game. Record your best streak on Base.",
+    "screenshotUrls": [
+      "https://your-app.vercel.app/screenshot1.png",
+      "https://your-app.vercel.app/screenshot2.png",
+      "https://your-app.vercel.app/screenshot3.png"
+    ],
+    "primaryCategory": "games",
+    "tags": ["cards", "game", "base", "streak", "highlow"],
+    "heroImageUrl": "https://your-app.vercel.app/og-image.png",
+    "tagline": "Two losses and it is over",
+    "ogTitle": "High or Low",
+    "ogDescription": "Card streak challenge on Base. How far can you go?",
+    "ogImageUrl": "https://your-app.vercel.app/og-image.png",
+    "requiredChains": ["eip155:8453"],
+    "requiredCapabilities": [],
+    "noindex": false
+  }
+}
