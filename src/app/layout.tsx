@@ -28,7 +28,7 @@ const miniAppEmbed = {
 
 export const metadata: Metadata = {
   title: 'High or Low',
-  description: 'Card streak challenge on Base. Two consecutive losses end the game.',
+  description: 'Card streak challenge on Base. One miss ends the game.',
   metadataBase: new URL(APP_URL),
   openGraph: {
     title: 'High or Low',
