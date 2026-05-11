@@ -23,6 +23,61 @@ const MUTED = '#c8bfaf';
 
 type Phase = 'idle' | 'playing' | 'revealing' | 'gameover';
 
+const FAN_CARDS = [
+  { rank: 'Q', suit: '♥', color: RED, rotate: -14, left: '8%' },
+  { rank: 'A', suit: '♠', color: INK, rotate: 0, left: '50%' },
+  { rank: '7', suit: '♦', color: RED, rotate: 14, left: '92%' },
+] as const;
+
+function CardFan() {
+  return (
+    <div style={{ position: 'relative', width: 220, height: 176, flexShrink: 0 }}>
+      {FAN_CARDS.map((c, i) => (
+        <div
+          key={i}
+          style={{
+            position: 'absolute',
+            left: c.left,
+            top: i === 1 ? 0 : 20,
+            transform: `translateX(-50%) rotate(${c.rotate}deg)`,
+            background: '#fff',
+            border: `2px solid ${MUTED}`,
+            borderRadius: 10,
+            width: 96,
+            height: 136,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            justifyContent: 'space-between',
+            padding: '10px 12px',
+            zIndex: i === 1 ? 3 : 1,
+            boxSizing: 'border-box',
+          }}
+        >
+          <span style={{ fontWeight: 900, fontSize: 18, color: c.color, lineHeight: 1 }}>
+            {c.rank}
+          </span>
+          <span style={{ fontSize: 40, color: c.color, textAlign: 'center', lineHeight: 1 }}>
+            {c.suit}
+          </span>
+          <span
+            style={{
+              fontWeight: 900,
+              fontSize: 18,
+              color: c.color,
+              alignSelf: 'flex-end',
+              transform: 'rotate(180deg)',
+              lineHeight: 1,
+            }}
+          >
+            {c.rank}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 interface GameState {
   phase: Phase;
   currentCard: Card | null;
@@ -346,6 +401,7 @@ export default function Home() {
         {/* IDLE */}
         {phase === 'idle' && (
           <>
+            <CardFan />
             <div style={{ textAlign: 'center' }}>
               <h1
                 style={{

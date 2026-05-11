@@ -10,26 +10,43 @@ export async function GET() {
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#ede9df',
+          background: '#141410',
         }}
       >
+        {/* Single large card */}
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: '#141410',
-            width: 720,
-            height: 720,
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            justifyContent: 'space-between',
+            background: '#ffffff',
+            borderRadius: 72,
+            width: 620,
+            height: 860,
+            padding: '72px 80px',
           }}
         >
+          {/* Top rank */}
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
+              fontWeight: 900,
+              fontSize: 200,
+              color: '#141410',
+              lineHeight: 1,
+              fontFamily: 'sans-serif',
+            }}
+          >
+            A
+          </div>
+
+          {/* Center: diamond suit shape */}
+          <div
+            style={{
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -37,29 +54,28 @@ export async function GET() {
             <div
               style={{
                 display: 'flex',
-                fontWeight: 900,
-                fontSize: 280,
-                color: '#ede9df',
-                lineHeight: 1,
-                letterSpacing: '-8px',
-                fontFamily: 'sans-serif',
+                width: 220,
+                height: 220,
+                background: '#141410',
+                transform: 'rotate(45deg)',
               }}
-            >
-              H/L
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                fontSize: 72,
-                color: '#ede9df',
-                opacity: 0.35,
-                letterSpacing: '20px',
-                fontFamily: 'sans-serif',
-                fontWeight: 700,
-              }}
-            >
-              CARDS
-            </div>
+            />
+          </div>
+
+          {/* Bottom rank (upside down) */}
+          <div
+            style={{
+              display: 'flex',
+              fontWeight: 900,
+              fontSize: 200,
+              color: '#141410',
+              lineHeight: 1,
+              fontFamily: 'sans-serif',
+              alignSelf: 'flex-end',
+              transform: 'rotate(180deg)',
+            }}
+          >
+            A
           </div>
         </div>
       </div>
