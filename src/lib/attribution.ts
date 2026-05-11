@@ -2,9 +2,8 @@ import { concatHex, encodeFunctionData, type Hex } from 'viem';
 import { Attribution } from 'ox/erc8021';
 import { ABI, CONTRACT_ADDRESS } from './contract';
 
-// TODO: Replace with your actual builder code from Base Build dashboard (bc_xxxxxxxx)
 const BUILDER_SUFFIX = Attribution.toDataSuffix({
-  codes: ['bc_xxxxxxxx'],
+  codes: ['bc_zzpgyapp'],
 }) as Hex;
 
 export function encodeWithAttribution(
