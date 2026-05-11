@@ -10,7 +10,7 @@ export const minikitConfig = {
     version: '1',
     name: 'High or Low',
     subtitle: 'Card streak challenge on Base',
-    description: 'Guess higher or lower! Two consecutive losses end the game. Record your best streak on Base and share it on Farcaster.',
+    description: 'Guess higher or lower! One miss ends the game. How far can you go? Record your best streak on Base.',
     iconUrl: `${ROOT_URL}/icon.png`,
     splashImageUrl: `${ROOT_URL}/splash.png`,
     splashBackgroundColor: '#0f172a',

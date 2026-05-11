@@ -235,7 +235,7 @@ export default function Home() {
   const advance = useCallback(() => {
     setGame(prev => {
       if (prev.phase !== 'revealing') return prev;
-      if (prev.consecutiveLosses >= 2) {
+      if (prev.consecutiveLosses >= 1) {
         setFinalStreak(prev.bestStreak);
         return { ...prev, phase: 'gameover' };
       }
@@ -289,19 +289,16 @@ export default function Home() {
 
   const { phase, currentCard, nextCard, currentStreak, bestStreak, consecutiveLosses, lastResult } =
     game;
-  const lives = 2 - consecutiveLosses;
   const primaryConnector = connectors.find(c => c.id === 'coinbaseWalletSDK') ?? connectors[0];
 
   const wasTie =
-    lastResult === 'loss' && currentCard && nextCard && isTie(currentCard, nextCard);
+    phase === 'revealing' && lastResult === 'loss' && currentCard && nextCard && isTie(currentCard, nextCard);
   const resultText =
     lastResult === 'win'
       ? 'WIN +1'
-      : consecutiveLosses >= 2
-        ? 'GAME OVER'
-        : wasTie
-          ? `TIE (loss) - ${consecutiveLosses} of 2`
-          : `MISS - ${consecutiveLosses} of 2`;
+      : wasTie
+        ? 'TIE - GAME OVER'
+        : 'MISS - GAME OVER';
   const resultColor = lastResult === 'win' ? BLUE : RED;
 
   return (
@@ -328,12 +325,9 @@ export default function Home() {
           High or Low
         </span>
         {(phase === 'playing' || phase === 'revealing') && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <span style={{ fontWeight: 900, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-              Streak {currentStreak}
-            </span>
-            <Dots lives={lives} />
-          </div>
+          <span style={{ fontWeight: 900, fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            Streak {currentStreak}
+          </span>
         )}
       </div>
 
@@ -380,7 +374,7 @@ export default function Home() {
               >
                 Guess if the next card is higher or lower.
                 <br />
-                Two consecutive losses end the game.
+                One miss ends the game.
               </p>
             </div>
             <div style={{ width: '100%', maxWidth: 320 }}>
