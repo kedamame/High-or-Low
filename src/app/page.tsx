@@ -153,24 +153,6 @@ function CardFace({
   );
 }
 
-function Dots({ lives, max = 2 }: { lives: number; max?: number }) {
-  return (
-    <div style={{ display: 'flex', gap: 6 }}>
-      {Array.from({ length: max }).map((_, i) => (
-        <span
-          key={i}
-          style={{
-            width: 10,
-            height: 10,
-            borderRadius: '50%',
-            background: i < lives ? INK : MUTED,
-            display: 'inline-block',
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 function Btn({
   onClick,
@@ -250,6 +232,7 @@ export default function Home() {
   const [recordError, setRecordError] = useState<string | null>(null);
   // Captured at game-over time so Play Again cannot reset it before recording
   const [finalStreak, setFinalStreak] = useState(0);
+  const [showWalletPicker, setShowWalletPicker] = useState(false);
 
   const startGame = useCallback(() => {
     resetTx();
@@ -342,9 +325,18 @@ export default function Home() {
     }
   }, [finalStreak]);
 
-  const { phase, currentCard, nextCard, currentStreak, bestStreak, consecutiveLosses, lastResult } =
-    game;
-  const primaryConnector = connectors.find(c => c.id === 'coinbaseWalletSDK') ?? connectors[0];
+  const { phase, currentCard, nextCard, currentStreak, lastResult } = game;
+
+  // EIP-6963で個別検出されたウォレットがある場合、汎用injectedは非表示
+  const hasEip6963 = connectors.some(c => c.type === 'injected' && c.id !== 'injected');
+  const displayConnectors = connectors.filter(
+    c => !(c.id === 'injected' && hasEip6963),
+  );
+
+  // 接続成功時にピッカーを閉じる（connect失敗時はピッカーを維持して再試行可能にする）
+  useEffect(() => {
+    if (isConnected) setShowWalletPicker(false);
+  }, [isConnected]);
 
   const wasTie =
     phase === 'revealing' && lastResult === 'loss' && currentCard && nextCard && isTie(currentCard, nextCard);
@@ -575,12 +567,30 @@ export default function Home() {
 
             {/* Record */}
             {!isConnected ? (
-              <Btn
-                onClick={() => primaryConnector && connect({ connector: primaryConnector })}
-                variant="blue"
-              >
-                Connect to Record
-              </Btn>
+              showWalletPicker ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {displayConnectors.length === 0 ? (
+                    <p style={{ fontSize: 12, textAlign: 'center', opacity: 0.5, margin: 0 }}>
+                      No wallets detected
+                    </p>
+                  ) : displayConnectors.map(connector => (
+                    <Btn
+                      key={connector.id}
+                      onClick={() => connect({ connector })}
+                      variant="outline"
+                    >
+                      {connector.name}
+                    </Btn>
+                  ))}
+                  <Btn onClick={() => setShowWalletPicker(false)} variant="ghost">
+                    Cancel
+                  </Btn>
+                </div>
+              ) : (
+                <Btn onClick={() => setShowWalletPicker(true)} variant="blue">
+                  Connect to Record
+                </Btn>
+              )
             ) : isConfirmed ? (
               <div
                 style={{
