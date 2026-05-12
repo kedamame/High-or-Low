@@ -2,9 +2,9 @@ const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://your-app.vercel.app
 
 export const minikitConfig = {
   accountAssociation: {
-    header: 'TODO: generate via Warpcast Manifest Tool',
-    payload: 'TODO: generate via Warpcast Manifest Tool',
-    signature: 'TODO: generate via Warpcast Manifest Tool',
+    header: 'eyJmaWQiOjIxMTE4OSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweEFBZTM5NEQ1MWUyYzBhOTczNWUwQmI2NzdFMTJmMjE1MjVCRWI1NTIifQ',
+    payload: 'eyJkb21haW4iOiJoaWdoLW9yLWxvdy1zaWdtYS52ZXJjZWwuYXBwIn0',
+    signature: 'dmH+lPAgCA/WMYVFnY7dZzejXJCubwBu6M1y4Kq5kett90fKbAC6wLelo0lEPI9pOC7gS+zIphGKX/RU+p3vUxs=',
   },
   miniapp: {
     version: '1',

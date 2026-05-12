@@ -1,30 +1,30 @@
 {
   "accountAssociation": {
-    "header": "TODO: generate via Warpcast Manifest Tool at https://warpcast.com/~/developers/manifest",
-    "payload": "TODO",
-    "signature": "TODO"
+    "header": "eyJmaWQiOjIxMTE4OSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweEFBZTM5NEQ1MWUyYzBhOTczNWUwQmI2NzdFMTJmMjE1MjVCRWI1NTIifQ",
+    "payload": "eyJkb21haW4iOiJoaWdoLW9yLWxvdy1zaWdtYS52ZXJjZWwuYXBwIn0",
+    "signature": "dmH+lPAgCA/WMYVFnY7dZzejXJCubwBu6M1y4Kq5kett90fKbAC6wLelo0lEPI9pOC7gS+zIphGKX/RU+p3vUxs="
   },
   "miniapp": {
     "version": "1",
     "name": "High or Low",
-    "homeUrl": "https://your-app.vercel.app",
-    "iconUrl": "https://your-app.vercel.app/icon.png",
-    "splashImageUrl": "https://your-app.vercel.app/splash.png",
+    "homeUrl": "https://high-or-low-sigma.vercel.app",
+    "iconUrl": "https://high-or-low-sigma.vercel.app/icon.png",
+    "splashImageUrl": "https://high-or-low-sigma.vercel.app/splash.png",
     "splashBackgroundColor": "#ede9df",
     "subtitle": "Card streak challenge on Base",
-    "description": "Guess if the next card is higher or lower. Two consecutive losses end the game. Record your best streak on Base.",
+    "description": "Guess if the next card is higher or lower. One wrong answer ends your run. Chain correct guesses and record your best streak on Base. Can you beat your record?",
     "screenshotUrls": [
-      "https://your-app.vercel.app/screenshot1.png",
-      "https://your-app.vercel.app/screenshot2.png",
-      "https://your-app.vercel.app/screenshot3.png"
+      "https://high-or-low-sigma.vercel.app/screenshot1.png",
+      "https://high-or-low-sigma.vercel.app/screenshot2.png",
+      "https://high-or-low-sigma.vercel.app/screenshot3.png"
     ],
     "primaryCategory": "games",
     "tags": ["cards", "game", "base", "streak", "highlow"],
-    "heroImageUrl": "https://your-app.vercel.app/og-image.png",
-    "tagline": "Two losses and it is over",
+    "heroImageUrl": "https://high-or-low-sigma.vercel.app/og-image.png",
+    "tagline": "One miss ends the game",
     "ogTitle": "High or Low",
     "ogDescription": "Card streak challenge on Base. How far can you go?",
-    "ogImageUrl": "https://your-app.vercel.app/og-image.png",
+    "ogImageUrl": "https://high-or-low-sigma.vercel.app/og-image.png",
     "requiredChains": ["eip155:8453"],
     "requiredCapabilities": [],
     "noindex": false
