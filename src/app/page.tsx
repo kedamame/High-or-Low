@@ -14,7 +14,7 @@ import { useFarcasterMiniApp } from '@/lib/farcaster';
 import { randomCard, evaluateGuess, isTie, isRedSuit, type Card, type Guess } from '@/lib/game';
 import { encodeWithAttribution } from '@/lib/attribution';
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '';
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://high-or-low-sigma.vercel.app';
 const CREAM = '#ede9df';
 const INK = '#141410';
 const BLUE = '#3558c8';
@@ -316,11 +316,12 @@ export default function Home() {
       finalStreak > 0
         ? `I scored a streak of ${finalStreak} playing High or Low on Base! Can you beat me?`
         : 'Just played High or Low on Base. Give it a try!';
+    const shareUrl = `${APP_URL}/share?streak=${finalStreak}`;
     try {
       const { sdk } = await import('@farcaster/miniapp-sdk');
-      await sdk.actions.composeCast({ text, embeds: [APP_URL] });
+      await sdk.actions.composeCast({ text, embeds: [shareUrl] });
     } catch {
-      const url = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(APP_URL)}`;
+      const url = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent(shareUrl)}`;
       window.open(url, '_blank');
     }
   }, [finalStreak]);
