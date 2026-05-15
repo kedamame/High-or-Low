@@ -34,7 +34,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     openGraph: {
       title,
       description,
-      images: [{ url: ogImage, width: 1200, height: 630 }],
+      images: [{ url: ogImage, width: 900, height: 600 }],
     },
     other: {
       'fc:miniapp': JSON.stringify(miniAppEmbed),

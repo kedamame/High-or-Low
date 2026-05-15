@@ -6,7 +6,7 @@ export const runtime = 'edge';
 export async function GET(req: NextRequest) {
   const streak = Math.max(0, parseInt(req.nextUrl.searchParams.get('streak') || '0', 10));
   const streakStr = String(streak);
-  const fontSize = streakStr.length >= 4 ? 100 : streakStr.length === 3 ? 140 : streakStr.length === 2 ? 180 : 220;
+  const fontSize = streakStr.length >= 4 ? 80 : streakStr.length === 3 ? 110 : streakStr.length === 2 ? 150 : 180;
 
   return new ImageResponse(
     (
@@ -16,10 +16,10 @@ export async function GET(req: NextRequest) {
           height: '100%',
           display: 'flex',
           background: '#ede9df',
-          paddingTop: 80,
-          paddingBottom: 80,
-          paddingLeft: 80,
-          paddingRight: 80,
+          paddingTop: 60,
+          paddingBottom: 60,
+          paddingLeft: 60,
+          paddingRight: 60,
           alignItems: 'center',
         }}
       >
@@ -31,8 +31,8 @@ export async function GET(req: NextRequest) {
             justifyContent: 'space-between',
             flex: 1,
             height: '100%',
-            paddingTop: 20,
-            paddingBottom: 20,
+            paddingTop: 16,
+            paddingBottom: 16,
           }}
         >
           <div
@@ -40,10 +40,10 @@ export async function GET(req: NextRequest) {
               display: 'flex',
               flexDirection: 'column',
               fontWeight: 900,
-              fontSize: 128,
+              fontSize: 96,
               color: '#141410',
               lineHeight: 0.88,
-              letterSpacing: '-4px',
+              letterSpacing: '-3px',
               fontFamily: 'sans-serif',
             }}
           >
@@ -51,11 +51,11 @@ export async function GET(req: NextRequest) {
             <div style={{ display: 'flex', color: '#3558c8' }}>OR</div>
             <div style={{ display: 'flex' }}>LOW</div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <div
               style={{
                 display: 'flex',
-                fontSize: 22,
+                fontSize: 16,
                 color: '#141410',
                 opacity: 0.45,
                 fontFamily: 'sans-serif',
@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
             <div
               style={{
                 display: 'flex',
-                fontSize: 18,
+                fontSize: 14,
                 color: '#141410',
                 opacity: 0.3,
                 fontFamily: 'sans-serif',
@@ -86,9 +86,9 @@ export async function GET(req: NextRequest) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            width: 380,
+            width: 280,
             flexShrink: 0,
-            gap: 12,
+            gap: 10,
           }}
         >
           <div
@@ -99,7 +99,7 @@ export async function GET(req: NextRequest) {
               color: '#141410',
               lineHeight: 1,
               fontFamily: 'sans-serif',
-              letterSpacing: '-6px',
+              letterSpacing: '-4px',
             }}
           >
             {streakStr}
@@ -107,7 +107,7 @@ export async function GET(req: NextRequest) {
           <div
             style={{
               display: 'flex',
-              fontSize: 20,
+              fontSize: 16,
               color: '#141410',
               opacity: 0.35,
               fontFamily: 'sans-serif',
@@ -120,6 +120,6 @@ export async function GET(req: NextRequest) {
         </div>
       </div>
     ),
-    { width: 1200, height: 630 },
+    { width: 900, height: 600 },
   );
 }
